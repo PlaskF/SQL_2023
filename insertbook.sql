@@ -1,19 +1,10 @@
-DECLARE
-  MYBOOKID NUMBER;
-  MYBOOKNAME VARCHAR2(200);
-  MYPUBLISHER VARCHAR2(200);
-  MYPRICE NUMBER;
+create or replace PROCEDURE INSERTBOOK(
+    mybookid IN NUMBER,
+    mybookname IN VARCHAR2,
+    mypublisher IN VARCHAR2,
+    myprice IN NUMBER)
+AS 
 BEGIN
-  MYBOOKID := NULL;
-  MYBOOKNAME := NULL;
-  MYPUBLISHER := NULL;
-  MYPRICE := NULL;
-
-  INSERTBOOK(
-    MYBOOKID => MYBOOKID,
-    MYBOOKNAME => MYBOOKNAME,
-    MYPUBLISHER => MYPUBLISHER,
-    MYPRICE => MYPRICE
-  );
---rollback; 
+  INSERT INTO book(bookid, bookname, publisher, price)
+  VALUES(mybookid, mybookname, mypublisher, myprice);
 END;

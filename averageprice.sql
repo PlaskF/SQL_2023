@@ -1,13 +1,6 @@
-DECLARE
-  AVERAGEVAL NUMBER;
+create or replace PROCEDURE AVERAGEPRICE(
+    averageval OUT NUMBER)
+AS 
 BEGIN
-
-  AVERAGEPRICE(
-    AVERAGEVAL => AVERAGEVAL
-  );
-  /* Legacy output: 
-DBMS_OUTPUT.PUT_LINE('AVERAGEVAL = ' || AVERAGEVAL);
-*/ 
-  :AVERAGEVAL := AVERAGEVAL;
---rollback; 
+  SELECT AVG(price) INTO averageval FROM book WHERE price IS NOT NULL;
 END;
